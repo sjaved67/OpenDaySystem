@@ -14,10 +14,19 @@ $sql="INSERT INTO `registration`(`full_name`, `email`, `department`, `session`, 
 $result=mysqli_query($conn,$sql);
 
 if ($result)
-echo "Success!";
+// Set a 200 (okay) response code.
+http_response_code(200);
+    echo "Thank You! Your registration has been sent. You will be redirected in 5 secs.";
+    ?>
+    <script type="text/javascript">
+$(document).ready(function () {
+    setTimeout(function () {
+        window.location = "index.php";
+    }, 3000);
+});
+</script>
 else{
-    echo "Failed";
-    echo mysqli_error($conn);
+    echo "Error!";
 }
 
 ?>
